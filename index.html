@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RD LPG Supply & Installation | Gas Appliances, Refills & Transport Across Africa</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --ink:#0B1F2A;
+    --ink-soft:#142E3D;
+    --flame:#FF5E1A;
+    --flame-deep:#D9430C;
+    --steel:#8DA0AB;
+    --paper:#F4F0E6;
+    --safety:#FFC93C;
+    --line: rgba(244,240,230,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,31,42,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Oswald'; font-weight:700; font-size:22px; letter-spacing:0.04em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo span{color:var(--flame);}
+  .navlinks{display:flex; gap:32px; font-size:14px; font-weight:500; letter-spacing:0.03em; text-transform:uppercase;}
+  .navlinks a{opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1; color:var(--flame);}
+  .nav-cta{
+    background:var(--flame); color:var(--ink); padding:10px 20px; font-weight:600;
+    font-size:13px; text-transform:uppercase; letter-spacing:0.05em; border-radius:2px;
+  }
+  .navlinks, .nav-cta{display:flex;}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 28px 70px;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(ellipse at 80% -10%, rgba(255,94,26,0.18), transparent 55%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  .eyebrow{
+    color:var(--safety); font-size:13px; font-weight:600; letter-spacing:0.18em;
+    text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:30px; height:2px; background:var(--safety); display:inline-block;}
+  .hero h1{
+    font-size:clamp(38px, 5.2vw, 64px); line-height:1.04; font-weight:700;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal; color:var(--flame);}
+  .hero p{font-size:17px; color:rgba(244,240,230,0.78); max-width:480px; margin-bottom:32px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    padding:15px 28px; font-weight:600; font-size:14px; letter-spacing:0.04em;
+    text-transform:uppercase; border-radius:2px; display:inline-block; transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--flame); color:var(--ink);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,94,26,0.35);}
+  .btn-outline{border:1px solid var(--steel); color:var(--paper);}
+  .btn-outline:hover{border-color:var(--paper); transform:translateY(-2px);}
+
+  .hero-art{position:relative;}
+  .gauge-ring{
+    width:100%; max-width:420px; margin:0 auto; display:block;
+  }
+
+  .strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--ink-soft);
+  }
+  .strip-inner{
+    max-width:1180px; margin:0 auto; padding:18px 28px;
+    display:flex; flex-wrap:wrap; gap:14px 40px; justify-content:space-between;
+    font-family:'Oswald'; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel);
+  }
+  .strip-inner b{color:var(--paper); font-weight:600;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:90px 0;}
+  .sec-head{display:flex; justify-content:space-between; align-items:flex-end; gap:30px; margin-bottom:50px; flex-wrap:wrap;}
+  .sec-num{font-family:'Oswald'; color:var(--flame); font-size:14px; letter-spacing:0.15em; margin-bottom:10px; font-weight:600;}
+  .sec-head h2{font-size:clamp(28px,3.6vw,42px); font-weight:600; max-width:600px;}
+  .sec-head p{color:var(--steel); max-width:380px; font-size:15px;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--ink);}
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .service-card{
+    background:var(--ink); padding:38px 32px; transition:background .25s;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .service-card:hover{background:var(--ink-soft);}
+  .service-icon{width:54px; height:54px;}
+  .service-card h3{font-size:20px; font-weight:600;}
+  .service-card p{font-size:14.5px; color:rgba(244,240,230,0.7);}
+  .service-tag{
+    font-family:'Oswald'; font-size:11px; letter-spacing:0.12em; color:var(--flame);
+    text-transform:uppercase; margin-top:auto; padding-top:14px; border-top:1px solid var(--line);
+  }
+  @media (max-width:860px){ .service-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CYLINDER SIZES ---------- */
+  .sizes{background:var(--ink-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .size-row{
+    display:flex; align-items:flex-end; gap:26px; justify-content:space-between;
+    padding-top:30px; flex-wrap:wrap;
+  }
+  .size-item{text-align:center; flex:1; min-width:80px;}
+  .size-item svg{width:100%; max-width:90px; height:auto; margin:0 auto;}
+  .size-label{font-family:'Oswald'; font-weight:600; margin-top:14px; font-size:15px;}
+  .size-sub{font-size:12px; color:var(--steel); letter-spacing:0.05em;}
+
+  /* ---------- PRODUCTS + COC ---------- */
+  .products{padding:90px 0;}
+  .product-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:60px;
+  }
+  .product-card{
+    background:var(--ink-soft); border:1px solid var(--line); padding:24px; border-radius:4px;
+    transition:border-color .2s, transform .2s;
+  }
+  .product-card:hover{border-color:var(--flame); transform:translateY(-4px);}
+  .product-svg{width:100%; height:auto; margin-bottom:18px;}
+  .product-card h3{font-size:16px; font-weight:600; margin-bottom:10px;}
+  .product-card p{font-size:13.5px; color:var(--steel);}
+  @media (max-width:900px){ .product-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .product-grid{grid-template-columns:1fr;} }
+
+  .coc-banner{
+    display:flex; gap:28px; align-items:center; background:var(--ink-soft);
+    border:1px solid var(--line); border-left:3px solid var(--safety);
+    padding:36px; border-radius:4px;
+  }
+  .coc-icon{flex-shrink:0; width:80px; height:80px;}
+  .coc-text h3{font-size:20px; font-weight:600; margin-bottom:10px;}
+  .coc-text p{font-size:14.5px; color:rgba(244,240,230,0.78); max-width:680px;}
+  @media (max-width:640px){ .coc-banner{flex-direction:column; text-align:center;} }
+
+  /* ---------- TRANSPORT / COVERAGE ---------- */
+  .coverage{background:var(--ink);}
+  .coverage-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .coverage-art{display:flex; justify-content:center;}
+  .coverage-art svg{width:100%; max-width:440px;}
+  .coverage-text h2{font-size:clamp(26px,3.2vw,38px); margin-bottom:20px;}
+  .coverage-text p{color:rgba(244,240,230,0.78); margin-bottom:24px; font-size:15.5px;}
+  .coverage-list{list-style:none; display:flex; flex-direction:column; gap:14px;}
+  .coverage-list li{display:flex; gap:14px; align-items:flex-start; font-size:14.5px; color:var(--paper);}
+  .coverage-list li::before{
+    content:''; width:8px; height:8px; background:var(--flame); margin-top:6px; flex-shrink:0; transform:rotate(45deg);
+  }
+  @media (max-width:860px){ .coverage-grid{grid-template-columns:1fr;} }
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--ink-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .process-row{display:grid; grid-template-columns:repeat(4,1fr); gap:30px;}
+  .process-step{position:relative; padding-left:0;}
+  .process-step .pnum{
+    font-family:'Oswald'; font-size:46px; font-weight:700; color:transparent;
+    -webkit-text-stroke:1.5px var(--flame); margin-bottom:14px; display:block;
+  }
+  .process-step h4{font-size:16px; margin-bottom:10px; font-weight:600;}
+  .process-step p{font-size:14px; color:var(--steel);}
+  @media (max-width:860px){ .process-row{grid-template-columns:1fr 1fr;} }
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ink); position:relative; overflow:hidden;}
+  .contact::before{
+    content:''; position:absolute; right:-120px; top:-120px; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,94,26,0.18), transparent 70%);
+  }
+  .contact-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; position:relative; z-index:1;}
+  .contact h2{font-size:clamp(28px,3.6vw,42px); margin-bottom:18px;}
+  .contact > .wrap > .contact-grid > div:first-child p{color:rgba(244,240,230,0.75); max-width:440px; margin-bottom:30px; font-size:15.5px;}
+  .contact-card{
+    background:var(--ink-soft); border:1px solid var(--line); padding:36px; border-radius:4px;
+  }
+  .contact-row{display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid var(--line);}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row svg{width:22px; height:22px; flex-shrink:0; margin-top:2px; color:var(--flame);}
+  .contact-row .label{font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--steel); margin-bottom:4px;}
+  .contact-row .val{font-family:'Oswald'; font-size:17px; font-weight:500;}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+
+  footer{
+    border-top:1px solid var(--line); padding:30px 28px; text-align:center;
+    font-size:13px; color:var(--steel);
+  }
+  footer b{color:var(--paper);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">RD <span>LPG</span></div>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#products">Burners &amp; Stoves</a>
+      <a href="#sizes">Cylinder Sizes</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="#contact">Get a Quote</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">RD LPG Supply &amp; Installation</div>
+      <h1>Gas, delivered <em>anywhere</em> in Africa.</h1>
+      <p>We install gas stoves and heaters, refill cylinders from 3kg to 48kg, and run road tankers carrying any volume of LPG to any location on the continent — safely, reliably, on schedule.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:+27611135100">Call +27 61 113 5100</a>
+        <a class="btn btn-outline" href="#services">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg class="gauge-ring" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="210" cy="210" r="190" stroke="#8DA0AB" stroke-opacity="0.25" stroke-width="1.5"/>
+        <circle cx="210" cy="210" r="150" stroke="#8DA0AB" stroke-opacity="0.18" stroke-width="1"/>
+        <!-- gauge ticks -->
+        <g stroke="#8DA0AB" stroke-opacity="0.4" stroke-width="2">
+          <line x1="210" y1="22" x2="210" y2="42"/>
+          <line x1="398" y1="210" x2="378" y2="210"/>
+          <line x1="210" y1="398" x2="210" y2="378"/>
+          <line x1="22" y1="210" x2="42" y2="210"/>
+        </g>
+        <!-- needle -->
+        <line x1="210" y1="210" x2="300" y2="130" stroke="#FF5E1A" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="210" cy="210" r="10" fill="#FF5E1A"/>
+        <!-- central cylinder illustration -->
+        <g transform="translate(150,120)">
+          <rect x="20" y="0" width="20" height="22" rx="3" fill="#8DA0AB"/>
+          <path d="M0 30 a30 18 0 0 1 60 0 v120 a30 18 0 0 1 -60 0 z" fill="#142E3D" stroke="#FF5E1A" stroke-width="2.5"/>
+          <ellipse cx="30" cy="30" rx="30" ry="18" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2.5"/>
+          <text x="30" y="100" text-anchor="middle" fill="#F4F0E6" font-family="Oswald" font-size="15" font-weight="600">LPG</text>
+        </g>
+        <!-- flame -->
+        <g transform="translate(186,60)">
+          <path d="M24 0 C30 16 12 20 16 36 C18 44 28 46 28 36 C36 44 30 58 18 58 C4 58 -2 44 4 30 C8 22 18 18 24 0Z" fill="#FF5E1A"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <div><b>3kg – 48kg</b> cylinder range</div>
+    <div><b>24/7</b> emergency refill &amp; install</div>
+    <div><b>Pan-African</b> road tanker transport</div>
+    <div><b>Certified</b> installation technicians</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">What we do</div>
+        <h2>Three services, one gas company.</h2>
+      </div>
+      <p>From the cylinder under your sink to the tanker on the highway — RD LPG handles the full supply chain.</p>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 64 64" fill="none">
+          <rect x="8" y="30" width="48" height="22" rx="3" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="20" cy="22" r="7" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="38" cy="22" r="7" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="20" cy="22" r="2" fill="#FF5E1A"/>
+          <circle cx="38" cy="22" r="2" fill="#FF5E1A"/>
+          <rect x="14" y="40" width="6" height="6" fill="#FF5E1A"/>
+          <rect x="26" y="40" width="6" height="6" fill="#FF5E1A"/>
+          <rect x="38" y="40" width="6" height="6" fill="#FF5E1A"/>
+        </svg>
+        <h3>Appliance Installation</h3>
+        <p>Professional installation of gas stoves, burners and water heaters in homes, restaurants and guest houses, with full leak testing — and every job finished with a Certificate of Compliance (CoC).</p>
+        <div class="service-tag">Stoves · Burners · Heaters · CoC Issued</div>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 64 64" fill="none">
+          <path d="M16 18 a16 9 0 0 1 32 0 v24 a16 9 0 0 1 -32 0 z" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <ellipse cx="32" cy="18" rx="16" ry="9" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <path d="M32 26 v12 m-5 -5 l5 5 l5 -5" stroke="#FF5E1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Cylinder Gas Refill</h3>
+        <p>Fast, accurate refills for every cylinder size from 3kg domestic bottles up to 48kg commercial tanks, weighed and sealed to the correct fill standard.</p>
+        <div class="service-tag">3kg – 48kg</div>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 64 64" fill="none">
+          <rect x="4" y="26" width="34" height="16" rx="2" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <path d="M38 30 h12 l8 8 v8 h-20 z" fill="none" stroke="#FF5E1A" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="16" cy="46" r="5" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="48" cy="46" r="5" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <path d="M4 20 h34" stroke="#FF5E1A" stroke-width="2" stroke-dasharray="2 3"/>
+        </svg>
+        <h3>Gas Tank Transportation</h3>
+        <p>Road tankers and bulk haulage for any quantity of LPG, with route planning, tracking and trained drivers covering cross-border delivery across Africa.</p>
+        <div class="service-tag">Any Volume · Any Location</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CYLINDER SIZES -->
+<section id="sizes" class="sizes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Cylinder range</div>
+        <h2>One supplier for every size.</h2>
+      </div>
+      <p>Domestic, hospitality or industrial — we stock, refill and deliver the full LPG cylinder lineup.</p>
+    </div>
+
+    <div class="size-row">
+      <!-- generate cylinders 3,5,9,14,19,22,48 -->
+      <div class="size-item">
+        <svg viewBox="0 0 60 100"><path d="M14 18 a16 8 0 0 1 32 0 v40 a16 8 0 0 1 -32 0 z" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/><ellipse cx="30" cy="18" rx="16" ry="8" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2"/><rect x="24" y="6" width="12" height="10" fill="#8DA0AB"/></svg>
+        <div class="size-label">3kg</div><div class="size-sub">Portable</div>
+      </div>
+      <div class="size-item">
+        <svg viewBox="0 0 60 110"><path d="M14 20 a16 8 0 0 1 32 0 v48 a16 8 0 0 1 -32 0 z" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/><ellipse cx="30" cy="20" rx="16" ry="8" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2"/><rect x="24" y="7" width="12" height="11" fill="#8DA0AB"/></svg>
+        <div class="size-label">5kg</div><div class="size-sub">Household</div>
+      </div>
+      <div class="size-item">
+        <svg viewBox="0 0 60 130"><path d="M14 22 a16 8 0 0 1 32 0 v66 a16 8 0 0 1 -32 0 z" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/><ellipse cx="30" cy="22" rx="16" ry="8" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2"/><rect x="24" y="8" width="12" height="12" fill="#8DA0AB"/></svg>
+        <div class="size-label">9kg</div><div class="size-sub">Kitchen</div>
+      </div>
+      <div class="size-item">
+        <svg viewBox="0 0 70 150"><path d="M19 24 a18 9 0 0 1 36 0 v80 a18 9 0 0 1 -36 0 z" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/><ellipse cx="37" cy="24" rx="18" ry="9" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2"/><rect x="30" y="9" width="14" height="13" fill="#8DA0AB"/></svg>
+        <div class="size-label">14kg</div><div class="size-sub">Restaurant</div>
+      </div>
+      <div class="size-item">
+        <svg viewBox="0 0 70 170"><path d="M19 24 a18 9 0 0 1 36 0 v100 a18 9 0 0 1 -36 0 z" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/><ellipse cx="37" cy="24" rx="18" ry="9" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2"/><rect x="30" y="9" width="14" height="13" fill="#8DA0AB"/></svg>
+        <div class="size-label">19kg</div><div class="size-sub">Catering</div>
+      </div>
+      <div class="size-item">
+        <svg viewBox="0 0 80 190"><path d="M22 26 a20 10 0 0 1 40 0 v110 a20 10 0 0 1 -40 0 z" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/><ellipse cx="42" cy="26" rx="20" ry="10" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2"/><rect x="34" y="10" width="16" height="14" fill="#8DA0AB"/></svg>
+        <div class="size-label">22kg</div><div class="size-sub">Commercial</div>
+      </div>
+      <div class="size-item">
+        <svg viewBox="0 0 90 220"><path d="M25 28 a22 11 0 0 1 44 0 v140 a22 11 0 0 1 -44 0 z" fill="#142E3D" stroke="#FF5E1A" stroke-width="2.5"/><ellipse cx="47" cy="28" rx="22" ry="11" fill="#1c3f52" stroke="#FF5E1A" stroke-width="2.5"/><rect x="38" y="10" width="18" height="16" fill="#8DA0AB"/></svg>
+        <div class="size-label">48kg</div><div class="size-sub">Industrial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS + COC -->
+<section id="products" class="products" style="background:var(--ink); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">Products we install</div>
+        <h2>Gas stoves &amp; gas burners, fitted right.</h2>
+      </div>
+      <p>Single and multi-burner stoves, built-in hobs and standalone burners — supplied or customer-owned, all installed by certified technicians.</p>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <svg viewBox="0 0 200 140" class="product-svg">
+          <rect x="10" y="60" width="180" height="60" rx="6" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/>
+          <rect x="10" y="60" width="180" height="10" fill="#0B1F2A"/>
+          <circle cx="55" cy="92" r="22" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="55" cy="92" r="5" fill="#FF5E1A"/>
+          <circle cx="145" cy="92" r="22" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="145" cy="92" r="5" fill="#FF5E1A"/>
+          <g stroke="#FFC93C" stroke-width="2">
+            <line x1="55" y1="70" x2="55" y2="76"/><line x1="55" y1="108" x2="55" y2="114"/>
+            <line x1="33" y1="92" x2="39" y2="92"/><line x1="71" y1="92" x2="77" y2="92"/>
+            <line x1="145" y1="70" x2="145" y2="76"/><line x1="145" y1="108" x2="145" y2="114"/>
+            <line x1="123" y1="92" x2="129" y2="92"/><line x1="161" y1="92" x2="167" y2="92"/>
+          </g>
+          <rect x="20" y="14" width="160" height="32" rx="4" fill="none" stroke="#8DA0AB" stroke-width="2"/>
+          <circle cx="40" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+          <circle cx="160" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+        </svg>
+        <h3>2-Burner Gas Stove</h3>
+        <p>Compact tabletop or built-in stoves, ideal for homes and small kitchens. Connected, leak-tested and signed off on site.</p>
+      </div>
+
+      <div class="product-card">
+        <svg viewBox="0 0 200 140" class="product-svg">
+          <rect x="6" y="60" width="188" height="60" rx="6" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/>
+          <rect x="6" y="60" width="188" height="10" fill="#0B1F2A"/>
+          <circle cx="38" cy="92" r="17" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="38" cy="92" r="4" fill="#FF5E1A"/>
+          <circle cx="100" cy="92" r="17" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="100" cy="92" r="4" fill="#FF5E1A"/>
+          <circle cx="162" cy="92" r="17" fill="none" stroke="#FF5E1A" stroke-width="2.5"/>
+          <circle cx="162" cy="92" r="4" fill="#FF5E1A"/>
+          <rect x="14" y="14" width="172" height="32" rx="4" fill="none" stroke="#8DA0AB" stroke-width="2"/>
+          <circle cx="34" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+          <circle cx="100" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+          <circle cx="166" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+        </svg>
+        <h3>3-Burner Gas Stove</h3>
+        <p>Mid-size stoves for family kitchens, guest houses and small eateries needing more than two cooking points.</p>
+      </div>
+
+      <div class="product-card">
+        <svg viewBox="0 0 200 140" class="product-svg">
+          <rect x="4" y="60" width="192" height="60" rx="6" fill="#142E3D" stroke="#FF5E1A" stroke-width="2.5"/>
+          <rect x="4" y="60" width="192" height="10" fill="#0B1F2A"/>
+          <circle cx="32" cy="92" r="14" fill="none" stroke="#FF5E1A" stroke-width="2.5"/><circle cx="32" cy="92" r="3.5" fill="#FF5E1A"/>
+          <circle cx="76" cy="92" r="14" fill="none" stroke="#FF5E1A" stroke-width="2.5"/><circle cx="76" cy="92" r="3.5" fill="#FF5E1A"/>
+          <circle cx="124" cy="92" r="14" fill="none" stroke="#FF5E1A" stroke-width="2.5"/><circle cx="124" cy="92" r="3.5" fill="#FF5E1A"/>
+          <circle cx="168" cy="92" r="14" fill="none" stroke="#FF5E1A" stroke-width="2.5"/><circle cx="168" cy="92" r="3.5" fill="#FF5E1A"/>
+          <rect x="12" y="14" width="176" height="32" rx="4" fill="none" stroke="#8DA0AB" stroke-width="2"/>
+          <circle cx="30" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+          <circle cx="75" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+          <circle cx="120" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+          <circle cx="166" cy="30" r="6" fill="none" stroke="#FF5E1A" stroke-width="2"/>
+        </svg>
+        <h3>4-Burner Gas Stove</h3>
+        <p>Full-size stoves for larger households, restaurants and catering kitchens, including built-in oven configurations.</p>
+      </div>
+
+      <div class="product-card">
+        <svg viewBox="0 0 200 140" class="product-svg">
+          <rect x="60" y="100" width="80" height="14" rx="3" fill="#142E3D" stroke="#8DA0AB" stroke-width="2"/>
+          <rect x="92" y="74" width="16" height="30" fill="#8DA0AB"/>
+          <circle cx="100" cy="60" r="34" fill="none" stroke="#FF5E1A" stroke-width="3"/>
+          <circle cx="100" cy="60" r="8" fill="#FF5E1A"/>
+          <g stroke="#FFC93C" stroke-width="2.5" stroke-linecap="round">
+            <line x1="100" y1="20" x2="100" y2="30"/>
+            <line x1="65" y1="35" x2="73" y2="42"/>
+            <line x1="135" y1="35" x2="127" y2="42"/>
+            <line x1="60" y1="60" x2="70" y2="60"/>
+            <line x1="140" y1="60" x2="130" y2="60"/>
+          </g>
+        </svg>
+        <h3>Standalone Gas Burner</h3>
+        <p>High-output single burners for outdoor cooking, catering events and industrial use — portable or hard-piped installs.</p>
+      </div>
+    </div>
+
+    <div class="coc-banner">
+      <div class="coc-icon">
+        <svg viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#FFC93C" stroke-width="3"/>
+          <circle cx="40" cy="40" r="27" fill="none" stroke="#FFC93C" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <path d="M27 41 L36 50 L54 30" stroke="#FFC93C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="coc-text">
+        <h3>Certificate of Compliance, every installation.</h3>
+        <p>Every stove, burner and heater we install is leak-tested and signed off with a Certificate of Compliance (CoC) — the paperwork insurers, landlords and inspectors ask for, included as standard, not an add-on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE / TRANSPORT -->
+<section id="coverage" class="coverage">
+  <div class="wrap coverage-grid">
+    <div class="coverage-text">
+      <div class="sec-num">Transportation</div>
+      <h2>Wherever the delivery point is, we get the gas there.</h2>
+      <p>Our road tanker fleet moves LPG in any quantity — single cylinders or bulk bridger loads — to construction sites, plants, retailers and remote communities anywhere in Africa.</p>
+      <ul class="coverage-list">
+        <li>Bulk and bridger tankers for large-volume industrial supply</li>
+        <li>Cross-border logistics with documentation handled for you</li>
+        <li>GPS-tracked delivery with real-time ETA updates</li>
+        <li>Trained, certified drivers and rigorously maintained tankers</li>
+      </ul>
+      <a class="btn btn-primary" href="#contact">Request Transport Quote</a>
+    </div>
+    <div class="coverage-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <!-- simplified africa-ish continent silhouette -->
+        <path d="M170 30 C210 30 230 55 235 85 C260 95 280 120 270 150 C290 165 300 195 280 220 C295 245 285 280 255 300 C250 330 225 360 195 365 C190 340 175 330 170 305 C150 300 140 280 145 255 C120 250 110 225 120 200 C95 195 85 165 105 145 C95 120 110 95 140 90 C140 60 150 35 170 30Z"
+          fill="#142E3D" stroke="#8DA0AB" stroke-width="2" stroke-opacity="0.5"/>
+        <!-- route dots -->
+        <circle cx="190" cy="80" r="5" fill="#FF5E1A"/>
+        <circle cx="230" cy="160" r="5" fill="#FFC93C"/>
+        <circle cx="170" cy="230" r="5" fill="#FFC93C"/>
+        <circle cx="195" cy="320" r="6" fill="#FF5E1A"/>
+        <path d="M190 80 L230 160 L170 230 L195 320" stroke="#FF5E1A" stroke-width="1.5" stroke-dasharray="4 5" fill="none"/>
+        <!-- truck icon at base -->
+        <g transform="translate(150,330)">
+          <rect x="0" y="10" width="40" height="18" rx="2" fill="none" stroke="#F4F0E6" stroke-width="2"/>
+          <path d="M40 14 h12 l8 8 v6 h-20z" fill="none" stroke="#F4F0E6" stroke-width="2"/>
+          <circle cx="10" cy="30" r="4" fill="#0B1F2A" stroke="#F4F0E6" stroke-width="2"/>
+          <circle cx="50" cy="30" r="4" fill="#0B1F2A" stroke="#F4F0E6" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">How it works</div>
+        <h2>From call to delivery.</h2>
+      </div>
+    </div>
+    <div class="process-row">
+      <div class="process-step">
+        <span class="pnum">01</span>
+        <h4>You call or message</h4>
+        <p>Tell us what you need — installation, a refill size, or a transport volume and destination.</p>
+      </div>
+      <div class="process-step">
+        <span class="pnum">02</span>
+        <h4>We confirm and quote</h4>
+        <p>A clear quote and timeline, with no hidden costs, before any work or delivery is scheduled.</p>
+      </div>
+      <div class="process-step">
+        <span class="pnum">03</span>
+        <h4>We dispatch</h4>
+        <p>Technicians or tankers are dispatched, with safety checks done before departure and on arrival.</p>
+      </div>
+      <div class="process-step">
+        <span class="pnum">04</span>
+        <h4>Job done, gas flowing</h4>
+        <p>Installation tested, cylinders filled and sealed, or tanker delivered — signed off on site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="sec-num">Get in touch</div>
+        <h2>Talk to RD LPG today.</h2>
+        <p>Whether it's a single stove installation or a tanker load crossing borders, reach out and we'll get gas moving for you.</p>
+        <a class="btn btn-primary" href="mailto:info@rdlpg.com">Email Us</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <div class="label">Call us</div>
+            <div class="val">+27 61 113 5100</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <div class="label">Alternative line</div>
+            <div class="val">+27 68 085 1078</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          <div>
+            <div class="label">Email</div>
+            <div class="val">info@rdlpg.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <div class="label">Service area</div>
+            <div class="val">All of Africa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>RD LPG Supply &amp; Installation</b> — Gas appliance installation, cylinder refills (3kg–48kg) &amp; road tanker transport across Africa.
+</footer>
+
+</body>
+</html>
